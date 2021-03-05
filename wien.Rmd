@@ -70,6 +70,8 @@ library(gt)
 library(ggtext)
 library(latex2exp)
 library(scales)
+
+options(scipen = 100)
 ```
 
 ```{r data}
@@ -125,15 +127,16 @@ z %>%
 <br>
 
 ## Graph  
-Plot a graph of lambda ($\lambda_{max}$) versus inverse temperature ($\frac{1}{T}$). Because the numbers for $\frac{1}{T}$ are so small, you should use scientific notation. Calculate the slope of this line.  
+Plot a graph of lambda ($\lambda_{max}$) versus inverse temperature ($\frac{1}{T}$). Because the numbers for $\frac{1}{T}$ are so small, you might like to use scientific notation. Calculate the slope of this line.  
 It should look a little like the graph sketched below.
 
-```{r graph1}
+```{r graph1, fig.width=6, fig.align = 'center'}
 z %>% ggplot(aes(1/T, lambda)) + 
   geom_point(size = 5, show.legend = F, shape = 1) + 
   geom_point(show.legend = F) + 
   geom_smooth(method = "lm", fullrange = T, se = F, show.legend = F) + 
-  labs(title = TeX("$\\lambda_{max}$ vs inverse temperature for blackbody radiation"),
+  labs(title = TeX("$\\lambda_{max}$ vs inverse temperature"),
+       subtitle = " for blackbody radiation",
        x = TeX("$\\frac{1}{T} (K^{-1})$"),
        y = TeX("$\\lambda_{max} (\\mu m)$")) + 
   scale_x_continuous(labels = label_number_si(accuracy = 0.00001)) +  
@@ -141,23 +144,25 @@ z %>% ggplot(aes(1/T, lambda)) +
   stat_regline_equation(formula = y ~ x - 1,
                         output.type = "latex",
                         show.legend = F,
-                        size = 12,
+                        size = 10,
                         family = "Ink Free",
                         col = "firebrick4") +
   theme_minimal() + 
   theme(text = element_text(family = "Ink Free", size = 24),
-        plot.title = element_text(size = 18))
+        plot.title = element_text(size = 18),
+        plot.subtitle = element_text(size = 18))
 ```
 
 Plot a graph of Power versus the fourth power of temperature ($T^4$). Again, scientific notation is your friend here, this time for both x and y scales. Calculate the slope of this line.  
 It should look a little like the graph sketched below.
 
-```{r graph2}
+```{r graph2, fig.width=6, fig.align = 'center'}
 z %>% ggplot(aes(T^4, power)) + 
   geom_point(size = 5, show.legend = F, shape = 1) + 
   geom_point(show.legend = F) + 
   geom_smooth(method = "lm", fullrange = T, se = F, show.legend = F) + 
-  labs(title = TeX("Power per unit area versus $temperature^4$ for a blackbody"),
+  labs(title = TeX("Power per unit area versus $temperature^4$"),
+       subtitle = "for a blackbody",
        x = TeX("$T^4 (K^4)$"),
        y = TeX("P(W/m^2)")) + 
   scale_x_continuous(labels = scientific) +
@@ -165,12 +170,13 @@ z %>% ggplot(aes(T^4, power)) +
   stat_regline_equation(formula = y ~ x - 1,
                         output.type = "latex",
                         show.legend = F,
-                        size = 12,
+                        size = 10,
                         family = "Ink Free",
                         col = "firebrick4") +
   theme_minimal() + 
   theme(text = element_text(family = "Ink Free", size = 24),
-        plot.title = element_text(size = 18))
+        plot.title = element_text(size = 18),
+        plot.subtitle = element_text(size = 18))
 ```
 
 
