@@ -112,7 +112,8 @@ z %>%
     ),
     locations = cells_body(rows = seq(2, 10, by=2))
   ) %>% 
-  cols_width( ~ px(150))
+  cols_width( ~ px(150)) %>% 
+  tab_options(table.font.size = 24)
 ```
 <br>
 <br>
@@ -168,9 +169,12 @@ z %>% ggplot(aes(height, v0_squared)) +
 
 ## Analysis
 
-The slope of the first graph will be equal to $g$ (using $v\:=\:v_0\:+\:at$ and taking into account the opposite directions of $v_0$ and g).
+The slope of the first graph will be equal to $g$ (using $v\:=\:v_0\:+\:at$ and taking into account the opposite directions of $v_0$ and g).  
+So the slope of the first graph will be a measurement of _g_.
 
-The slope of the second graph will be equal to $2\times g$ (using $v^2\:=\:v_0^2\:+\:2 \times a \times s$ and again taking into account the opposite directions of $v_0$ and g).
+The slope of the second graph will be equal to $2\times g$ (using $v^2\:=\:v_0^2\:+\:2 \times a \times s$ and again taking into account the opposite directions of $v_0$ and g).  
+So the _g_ will be equal to the slope of the second graph divided by _2_.
+
 
 
 ## Discussion
