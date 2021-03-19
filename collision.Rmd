@@ -179,4 +179,6 @@ disc %>%
 ```
 
 <br>
+For this lab, we can't really discuss inaccuracies, but your discussion section should include a discussion of how our results relate to **momentum conservation** and **energy loss in inelastic collisions**.
+<br>
 <br>
